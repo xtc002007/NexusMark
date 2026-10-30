@@ -1,70 +1,99 @@
 # NexusMark
 
-> 极速、极简、无缝双栏与实时预览的 Markdown 写作工作台。
+> **High-Performance, Dual-Engine Desktop Markdown Studio with Source-Fidelity Live Preview.**
 
-[![Release](https://img.shields.io/github/v/release/xtc002007/NexusMark?style=flat-square)](https://github.com/xtc002007/NexusMark/releases)
-[![Platform](https://img.shields.io/badge/platform-Windows%20(x64)-blue.svg?style=flat-square)](https://nexustools.tech)
+[![GitHub Release](https://img.shields.io/github/v/release/xtc002007/NexusMark?style=flat-square&color=blue)](https://github.com/xtc002007/NexusMark/releases)
+[![Platform](https://img.shields.io/badge/platform-Windows%20x64-blue.svg?style=flat-square)](https://nexustools.tech)
+[![Frontend](https://img.shields.io/badge/frontend-Svelte%205%20(Runes)%20%7C%20CodeMirror%206-ff3e00.svg?style=flat-square)](https://svelte.dev)
+[![Backend](https://img.shields.io/badge/backend-Rust%20%7C%20Tauri%20v2-orange.svg?style=flat-square)](https://tauri.app)
 [![License](https://img.shields.io/badge/license-Proprietary-lightgrey.svg?style=flat-square)](./LICENSE)
 
 ---
 
-## 📖 简介 / Overview
+## 📌 Overview
 
-**NexusMark** 是 [NexusTools](https://nexustools.tech) 团队打造的专业桌面工具。  
-轻量极速的 Markdown / CommonMark 沉浸式创作与高性能技术写作桌面工具。
+**NexusMark** is a next-generation desktop Markdown live-preview editor engineered specifically for technical documentation authors, researchers, engineers, and long-form prose writers. Built with **Tauri v2 + Svelte 5 (Runes) + Rust**, NexusMark solves the core dilemma of modern markdown editors: delivering instant, rich visual formatting while guaranteeing **100% Source-Text Fidelity**. Your `.md` files remain pristine, completely standard CommonMark/GFM, and seamlessly interchangeable with Obsidian, VS Code, Typora, and GitHub.
 
-本仓库为 **官方公开发布与分发门面仓库**，专门用于对外发布稳定安装包、版本更新日志（Release Notes）以及 Windows Package Manager (winget) 的自动化分发通道。
-
----
-
-## ✨ 核心亮点 / Features
-
-- **毫秒级启动与超低内存开销（基于 Tauri 2.x）**
-- **标准 Markdown / GFM 规范全面支持，包含公式、图表与代码高亮**
-- **平滑双栏同步滚动与零闪烁预览引擎**
-- **多格式专业导出（HTML、PDF 等）与版本快照支持**
+This repository serves as the **official public distribution and release portal** for NexusMark binaries, release assets, and package manager feeds (including [winget](https://github.com/microsoft/winget-pkgs)).
 
 ---
 
-## 🚀 安装与下载 / Installation
+## ⚡ Key Highlights & Core Capabilities
 
-### 方式 1: 通过 Windows Package Manager (winget) 推荐
+### 1. Dual-Parser Engine & Source-Fidelity
+- **Dual-Parser Architecture**: Combines **Lezer** (CodeMirror 6 incremental syntax parser) for zero-latency editing and tokenization with **comrak** (C-based Rust CommonMark/GFM engine) for pixel-perfect standard-compliant semantic rendering.
+- **Zero Syntax Pollution**: Never rewrites or injects proprietary tags into your documents. A file opened, edited, and saved in NexusMark remains byte-for-byte compatible with Git repositories, static site generators (VitePress, Astro, Docusaurus), and Obsidian.
 
-只需在 Windows Terminal / PowerShell 中输入：
+### 2. Immersive Live Preview & Interactive Editing
+- **Fluid In-Place Rendering**: Renders headings, blockquotes, lists, checklists, and code fences seamlessly in the active viewport with unobtrusive cursor-sensitive line decorations.
+- **Interactive Table Editor**: Visual inline table editing—add rows, delete columns, reorder cells, and format tabular data effortlessly without wrestling with raw pipe characters.
+- **Typewriter Scrolling Mode**: Automatically centers the active cursor line vertically, keeping your gaze fixed in the optimal reading zone.
+- **Focus Mode**: Selectively highlights the active paragraph or block while gently dimming surrounding text to eliminate distractions.
+
+### 3. Asynchronous Mathematical & Diagrammatic Typesetting
+- **KaTeX via Web Workers**: Offloads heavy LaTeX mathematical formula typesetting ($\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}$) to background worker threads, ensuring the main typing thread never drops a single frame.
+- **Comprehensive Mermaid Diagrams**: Embedded rendering for flowcharts, sequence diagrams, class diagrams, state machines, entity-relationship diagrams, and Gantt charts.
+- **Multi-Language Code Blocks**: Powered by CodeMirror 6 with syntax highlighting for over 50 programming and configuration languages.
+
+### 4. Lightning-Fast SQLite FTS5 Workspace Search
+- **Full-Text Search Engine**: Embedded SQLite FTS5 index enables instantaneous substring and boolean search across thousands of workspace documents.
+- **Live Search Highlighting**: Real-time keyword highlighting with one-click navigation directly to the matching line.
+- **Structured Front Matter Support**: Parse, inspect, and edit YAML Front Matter metadata through an intuitive visual form or raw editor view.
+
+---
+
+## 🚀 Installation & Downloads
+
+### Method 1: Windows Package Manager (winget) — Recommended
+
+Install NexusMark in one step using Windows Terminal or PowerShell:
 
 ```powershell
 winget install NexusTools.NexusMark
 ```
 
-升级现有版本：
+Upgrade to the latest release:
 
 ```powershell
 winget upgrade NexusTools.NexusMark
 ```
 
-### 方式 2: GitHub Releases 直接下载
+---
 
-访问 [Releases 页面](https://github.com/xtc002007/NexusMark/releases/latest)，下载最新版本的 Windows 安装包：
-- `NexusMark_<version>_windows_x64_setup.exe`（推荐，支持应用内平滑自动升级）
-- `NexusMark_<version>_windows_x64_portable.zip`（免安装绿色便携版）
+### Method 2: Direct Download from GitHub Releases
 
-### 方式 3: NexusTools 官方网站
+Download release packages from the [GitHub Releases](https://github.com/xtc002007/NexusMark/releases/latest) page:
 
-前往 [NexusTools 官网](https://nexustools.tech) 了解详情并一键下载。
+| Asset | Description | Recommended For |
+| :--- | :--- | :--- |
+| `NexusMark_<version>_windows_x64_setup.exe` | Standard Windows NSIS Installer | General desktop use (with desktop shortcut & auto-updates) |
+| `NexusMark_<version>_windows_x64_portable.zip` | Standalone Portable Archive | Portable storage and environments without administrator rights |
 
 ---
 
-## 🔄 自动更新与安全保障
+### Method 3: Official NexusTools Suite
 
-- **应用内自动更新**：软件内置静默更新检测与差分安全下载机制，由 NexusTools 官方分发端点提供稳定支持。
-- **数字验签与防篡改**：所有官方发布资产均附带 minisign ed25519 防篡改数字签名与 Windows Authenticode 代码签名。
+Discover NexusMark and the complete ecosystem at [https://nexustools.tech](https://nexustools.tech).
 
 ---
 
-## 📄 软件使用许可 / License
+## 🔒 Security, Authenticity & Verification
 
-本项目采用 [NexusTools 软件专有许可协议 (EULA)](./LICENSE)。  
-免费基础功能可永久免费使用；高级专业特性受 NexusTools 统一账号与订阅协议约束。
+- **Code Signing**: All release executables are protected with Windows Authenticode digital signatures.
+- **Minisign Verification**: Releases include cryptographic hashes and Ed25519 signatures.
+- **Secure Auto-Updates**: Built-in background update service checks official endpoints with full signature enforcement.
 
-- **问题反馈与建议**：欢迎在 [GitHub Issues](https://github.com/xtc002007/NexusMark/issues) 提交反馈。
-- **官方技术支持**：https://nexustools.tech
+---
+
+## ⚖️ License & EULA
+
+NexusMark is distributed under the [NexusTools End-User License Agreement (EULA)](./LICENSE).  
+- Core editing, Live-Preview, KaTeX, Mermaid, and local workspace search are permanently free for personal and professional use.  
+- Cloud AI writing enhancements and cross-device sync are managed through NexusTools account subscriptions.
+
+---
+
+## 💬 Community & Support
+
+- **Bug Reports & Feedback**: [GitHub Issues](https://github.com/xtc002007/NexusMark/issues)
+- **Official Portal**: [https://nexustools.tech](https://nexustools.tech)
